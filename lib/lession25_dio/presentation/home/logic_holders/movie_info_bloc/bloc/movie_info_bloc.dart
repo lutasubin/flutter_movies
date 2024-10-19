@@ -25,8 +25,9 @@ class MovieInfoBloc extends Bloc<MoviesEvent, MoviesState> {
       LoadMovies event, Emitter<MoviesState> emit) async {
     emit(MoviesLoading());
     try {
-      final movies = await getMovies();
-      emit(MoviesLoaded(movies ?? []));
+      final nowPlayingMovies=await getMovies.getNowPlayingMovies();
+      final upcomingMovies =await getMovies.getUpcomingMovies();
+      emit(MoviesLoaded(nowPlayingMovies:nowPlayingMovies  ?? [], upcomingMovies: upcomingMovies ??[]));
     } catch (error) {
       emit(MoviesError(error.toString()));
     }

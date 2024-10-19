@@ -24,4 +24,9 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<List<Movie>?> getMovies() {
     return remoteDataSource.getMovies();
   }
+  
+  @override
+  Future<List<Movie>?> getUpcomingMovies() {
+    return remoteDataSource.getUpcomingMovies();
+  }
 }

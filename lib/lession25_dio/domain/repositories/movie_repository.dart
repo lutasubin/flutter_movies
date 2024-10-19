@@ -7,4 +7,5 @@ abstract class MovieRepository {
   Future<List<Genre>?> getGenre();
   Future<ImageConfigInfo?> getImageInfo();
   Future<List<Movie>?> getMovies();
+  Future<List<Movie>?> getUpcomingMovies();
 }
