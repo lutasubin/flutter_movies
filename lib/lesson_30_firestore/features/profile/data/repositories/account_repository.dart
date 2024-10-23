@@ -18,7 +18,6 @@ class AccountRepositoryImpl implements AccountRepository {
     return remoteDatasource.updateOrCreateAccountData(
         userId,
         AccountModel(
-          userId: accountDataEntity.userId,
           avatarUrl: accountDataEntity.avatarUrl,
           fullName: accountDataEntity.fullName,
           dob: accountDataEntity.dob,

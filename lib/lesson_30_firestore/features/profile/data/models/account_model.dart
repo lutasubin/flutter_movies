@@ -6,9 +6,6 @@ part 'account_model.g.dart';
 
 @JsonSerializable()
 class AccountModel extends AccountEntity {
-  @JsonKey(name: 'user_id')
-  @override
-  final String? userId;
   @JsonKey(name: 'avatar_url')
   @override
   final String? avatarUrl;
@@ -24,8 +21,7 @@ class AccountModel extends AccountEntity {
   final String? email;
   @override
   final int? gender;
-  AccountModel({
-    this.userId,
+  const AccountModel({
     this.avatarUrl,
     this.fullName,
     this.dob,
@@ -33,7 +29,6 @@ class AccountModel extends AccountEntity {
     this.email,
     this.gender,
   }) : super(
-          userId: userId,
           avatarUrl: avatarUrl,
           fullName: fullName,
           dob: dob,
@@ -45,4 +40,27 @@ class AccountModel extends AccountEntity {
       _$AccountModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$AccountModelToJson(this);
+
+  Map<String, dynamic> toJsonForNonNullItems() {
+    Map<String, dynamic> result = {};
+    if (avatarUrl != null) {
+      result['avatar_url'] = fullName;
+    }
+    if (fullName != null) {
+      result['full_name'] = fullName;
+    }
+    if (dob != null) {
+      result['dob'] = dob!.toIso8601String();
+    }
+    if (phoneNumber != null) {
+      result['phone_number'] = phoneNumber;
+    }
+    if (email != null) {
+      result['email'] = email;
+    }
+    if (gender != null) {
+      result['gender'] = gender;
+    }
+    return result;
+  }
 }

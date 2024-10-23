@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/lesson_30_firestore/features/profile/presentation/widgets/information_content.dart';
 
 class RadioGenderItem extends StatelessWidget {
-  final String radioValue;
-  final String selectedValue;
+  final int radioValue;
+  final int? selectedValue;
   final void Function()? onTap;
   const RadioGenderItem({
     super.key,
@@ -41,7 +42,7 @@ class RadioGenderItem extends StatelessWidget {
               width: 8,
             ),
             Text(
-              radioValue,
+              radioValue.toGenderString(),
               style:
                   TextStyle(color: isItemSelected ? Colors.white : Colors.grey),
             )

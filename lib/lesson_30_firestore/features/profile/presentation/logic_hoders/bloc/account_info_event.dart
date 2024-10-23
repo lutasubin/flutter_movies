@@ -1,7 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'account_info_bloc.dart';
 
-abstract class AccountInfoEvent {}
+abstract class AccountInfoEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class FetchAccountInfo extends AccountInfoEvent {}
 
 class SaveInfo extends AccountInfoEvent {}
 
@@ -10,6 +15,8 @@ class UpdateDob extends AccountInfoEvent {
   UpdateDob({
     required this.newDob,
   });
+  @override
+  List<Object?> get props => [newDob];
 }
 
 class UpdateEmail extends AccountInfoEvent {
