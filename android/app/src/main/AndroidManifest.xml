@@ -6,7 +6,7 @@
     <package android:name="com.facebook.orca"/> -->
  </queries>
     <application
-        android:label="flutter_firebase"
+        android:label="Netflix FAKER"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
          >

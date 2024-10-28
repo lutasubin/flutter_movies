@@ -37,11 +37,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String get save => 'Luu';
 
   @override
-  String get male => 'Maless';
+  String get male => 'Males';
 
   @override
-  String get female => 'Femaless';
+  String get female => 'Female';
 
   @override
-  String get other => 'Othersss';
+  String get other => 'Other';
 }
