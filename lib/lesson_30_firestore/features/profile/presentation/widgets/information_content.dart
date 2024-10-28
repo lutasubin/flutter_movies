@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_firebase/l10n/generated/app_localizations.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/profile/presentation/custom_title_and_content_in_item.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/profile/presentation/information_section_widgets/date_picker_display.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/profile/presentation/information_section_widgets/fullname_input.dart';
@@ -24,7 +25,7 @@ class _InformationContentState extends State<InformationContent> {
     return Column(
       children: [
         CustomTitleAndContentInItem(
-            title: "Fullname",
+            title:AppLocalizations.of(context)!.name ,
             content: BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
               selector: (state) {
                 final fullnameFromFirestore =
@@ -41,7 +42,7 @@ class _InformationContentState extends State<InformationContent> {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdateFullname(newName: newValue));
                   },
-                  hintText: "Nhập họ và tên",
+                  hintText:  AppLocalizations.of(context)!.name,
                 );
               },
             )),
@@ -49,7 +50,7 @@ class _InformationContentState extends State<InformationContent> {
           height: 8,
         ),
         CustomTitleAndContentInItem(
-          title: "Date of birth",
+          title:  AppLocalizations.of(context)!.birth,
           content: BlocSelector<AccountInfoBloc, AccountInfoState, DateTime?>(
             selector: (state) {
               final dobFromFirestore = state.accountDataFromFirestore?.dob;
@@ -80,7 +81,7 @@ class _InformationContentState extends State<InformationContent> {
           height: 8,
         ),
         CustomTitleAndContentInItem(
-            title: "Phone Number",
+            title: AppLocalizations.of(context)!.phone ,
             content: BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
               selector: (state) {
                 final phoneNumFromFirestore =
@@ -97,7 +98,7 @@ class _InformationContentState extends State<InformationContent> {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdatePhoneNum(newPhoneNum: newValue));
                   },
-                  hintText: "Nhập số điện thoại",
+                  hintText:  AppLocalizations.of(context)!.phone,
                 );
               },
             )),
@@ -105,7 +106,7 @@ class _InformationContentState extends State<InformationContent> {
           height: 8,
         ),
         CustomTitleAndContentInItem(
-            title: "Email",
+            title:  AppLocalizations.of(context)!.email,
             content: BlocSelector<AccountInfoBloc, AccountInfoState, String?>(
               selector: (state) {
                 final emailFromFirestore =
@@ -121,7 +122,7 @@ class _InformationContentState extends State<InformationContent> {
                     BlocProvider.of<AccountInfoBloc>(context)
                         .add(UpdateEmail(newEmail: newValue));
                   },
-                  hintText: "Nhập email",
+                  hintText:  AppLocalizations.of(context)!.email,
                 );
               },
             )),
@@ -129,7 +130,7 @@ class _InformationContentState extends State<InformationContent> {
           height: 8,
         ),
         CustomTitleAndContentInItem(
-            title: "Gender",
+            title:  AppLocalizations.of(context)!.gender,
             content: BlocSelector<AccountInfoBloc, AccountInfoState, int?>(
               selector: (state) {
                 final genderFromFirestore =
@@ -194,7 +195,10 @@ class _InformationContentState extends State<InformationContent> {
                     canUpdate ? null : MaterialStateProperty.all(Colors.grey),
                 padding: MaterialStateProperty.all(
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 24))),
-            child: const Text("SAVE"),
+            child:Text(
+                    AppLocalizations.of(context)!.save
+                    ,
+                  ), 
           ),
         )
       ],
@@ -213,14 +217,14 @@ class _InformationContentState extends State<InformationContent> {
 }
 
 extension GenderExtension on int? {
-  String toGenderString() {
+  String toGenderString(BuildContext context) {
     switch (this) {
       case 1:
-        return "Male";
+        return  AppLocalizations.of(context)!.male;
       case 2:
-        return "Female";
+        return AppLocalizations.of(context)!.female;
       case 3:
-        return "Other";
+        return AppLocalizations.of(context)!.other;
       default:
         return "Unknown";
     }

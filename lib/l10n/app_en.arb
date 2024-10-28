@@ -1,0 +1,16 @@
+{
+    "@@locale": "en",
+    "helloWorld": "Hello World!",
+    "helloVTI": "Hello VTI, how is it going?",
+    "profile_app_bar_title":"Profile screen",
+    "name":"Full name",
+    "birth":"birth of date",
+    "phone":"Phone",
+    "email":"Email",
+    "gender":"Gender",
+    "languge":"Language",
+    "save":"Save",
+    "male":"Male",
+    "female":"Female",
+    "other":"Other"
+}

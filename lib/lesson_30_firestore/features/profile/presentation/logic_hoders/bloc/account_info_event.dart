@@ -8,6 +8,8 @@ abstract class AccountInfoEvent extends Equatable {
 
 class FetchAccountInfo extends AccountInfoEvent {}
 
+class PickImage extends AccountInfoEvent {}
+
 class SaveInfo extends AccountInfoEvent {}
 
 class UpdateDob extends AccountInfoEvent {

@@ -44,7 +44,7 @@ class AccountModel extends AccountEntity {
   Map<String, dynamic> toJsonForNonNullItems() {
     Map<String, dynamic> result = {};
     if (avatarUrl != null) {
-      result['avatar_url'] = fullName;
+      result['avatar_url'] = avatarUrl;
     }
     if (fullName != null) {
       result['full_name'] = fullName;

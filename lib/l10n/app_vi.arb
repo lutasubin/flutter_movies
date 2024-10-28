@@ -1,0 +1,19 @@
+{
+    "@@locale": "vi",
+    "helloWorld": "Xin chào Thế Giới",
+    "helloVTI": "Xin chào VTI, bạn khoẻ không",
+    "profile_app_bar_title":"Thông Tin Tài Khoản",
+    "name":"Họ Tên",
+     "birth":"Ngày Tháng",
+     "phone":"Số điện thoại",
+     "email":"Địa chỉ liên lạc",
+     "gender":"Giới Tính",
+     "languge":"Ngôn Ngữ",
+     "save":"Lưu",
+     "male":"Nữ",
+    "female":"Nam",
+    "other":"Khác"
+     
+
+
+}

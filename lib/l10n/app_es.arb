@@ -1,0 +1,17 @@
+{
+    "@@locale": "es",
+    "helloWorld": "¡Hola Mundo!",
+    "helloVTI": "Hola VTI, Paju Dora?",
+    "profile_app_bar_title":"Profile screen",
+    "name":"ho va ten",
+     "birth":"birth of date",
+     "phone":"sdt",
+     "email":"Emails",
+     "gender":"gioi tinhs",
+     "languge":"ngon ngus",
+     "save":"Luu",
+     "male":"Maless",
+    "female":"Femaless",
+    "other":"Othersss"
+
+}

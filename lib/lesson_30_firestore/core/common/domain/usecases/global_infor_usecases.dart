@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/lesson_30_firestore/core/common/domain/repositories/global_repository.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/home/domain/entities/genre.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/home/domain/entities/image_configuration.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/home/domain/repositories/movie_repository.dart';
-import 'package:flutter_firebase/lesson_30_firestore/features/home/domain/repositories/global_repository.dart';
-
 
 class GlobalInfoUsecases {
   final MovieRepository repository;

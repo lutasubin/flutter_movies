@@ -58,6 +58,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/day_icon.svg
   String get dayIcon => 'assets/svg/day_icon.svg';
 
+  /// File path: assets/svg/es.svg
+  String get es => 'assets/svg/es.svg';
+
   /// File path: assets/svg/night_icon.svg
   String get nightIcon => 'assets/svg/night_icon.svg';
 
@@ -81,6 +84,7 @@ class $AssetsSvgGen {
         appIcon,
         calendar,
         dayIcon,
+        es,
         nightIcon,
         option,
         sort,

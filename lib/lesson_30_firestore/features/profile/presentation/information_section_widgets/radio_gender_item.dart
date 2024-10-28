@@ -42,7 +42,7 @@ class RadioGenderItem extends StatelessWidget {
               width: 8,
             ),
             Text(
-              radioValue.toGenderString(),
+              radioValue.toGenderString(context),
               style:
                   TextStyle(color: isItemSelected ? Colors.white : Colors.grey),
             )

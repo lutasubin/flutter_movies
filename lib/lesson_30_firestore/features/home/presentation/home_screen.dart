@@ -1,13 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_firebase/lesson_30_firestore/core/apis/dio_client.dart';
-import 'package:flutter_firebase/lesson_30_firestore/core/services/logger_service.dart';
+import 'package:flutter_firebase/lesson_30_firestore/core/common/presentation/logic_holders/global_info_bloc/global_info_bloc.dart';
+import 'package:flutter_firebase/lesson_30_firestore/core/services/injection_container.dart';
 import 'package:flutter_firebase/lesson_30_firestore/core/utils/convert_util.dart';
-import 'package:flutter_firebase/lesson_30_firestore/features/home/data/datasources/movie_remote_data_source.dart';
-import 'package:flutter_firebase/lesson_30_firestore/features/home/data/repositories/movie_repository_impl.dart';
-import 'package:flutter_firebase/lesson_30_firestore/features/home/domain/usecases/movie_usecase.dart';
-import 'package:flutter_firebase/lesson_30_firestore/features/home/presentation/logic_holders/global_info_bloc/global_info_bloc.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/home/presentation/logic_holders/movie_info_bloc/movie_info_bloc.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/home/presentation/widgets/header_section.dart';
 import 'package:flutter_firebase/lesson_30_firestore/features/home/presentation/widgets/movie_item.dart';
@@ -26,8 +22,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MovieInfoBloc>(
-      create: (context) => MovieInfoBloc(GetMovies(MovieRepositoryImpl(
-          remoteDataSource: MovieRemoteDataSourceImpl(dio: DioClient().dio))))
+      create: (context) => MovieInfoBloc(getIt()
+          // GetMovies(
+          //   MovieRepositoryImpl(
+          //       remoteDataSource:
+          //           MovieRemoteDataSourceImpl(dio: DioClient().dio)),
+          // ),
+          )
         ..add(LoadMovies()),
       child: Scaffold(
         body: Column(
@@ -51,16 +52,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           final upcommingMovies = state.upcommingMovies;
                           return BlocBuilder<GlobalInfoBloc, GlobalInfoState>(
                               builder: (_, state) {
-                            if (state is GlobalInfoLoaded) {
-                              final imageConfigInfo = state.imageConfigInfo;
+                            final imageConfigInfo = state.imageConfigInfo;
+                            if (imageConfigInfo != null) {
                               final listPosterImage = upcommingMovies
                                   .map((e) =>
-                                      imageConfigInfo!.baseUrl +
+                                      imageConfigInfo.baseUrl +
                                       imageConfigInfo
                                           .getPosterSizeText('w342') +
                                       e.posterPath)
                                   .toList();
-                              printI("List poster: $listPosterImage");
                               return UpcomingSection(
                                 listUpcommingMoviesPoster: listPosterImage,
                                 setStateFunc: (index) {
@@ -134,7 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         return BlocBuilder<GlobalInfoBloc, GlobalInfoState>(
                           builder: (context, state) {
-                            if (state is GlobalInfoLoaded) {
+                            final imageConfigInfo = state.imageConfigInfo;
+                            if (imageConfigInfo != null) {
                               final imageConfigInfo = state.imageConfigInfo;
 
                               return SliverGrid.builder(
@@ -144,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisCount: 2,
                                     crossAxisSpacing: 16,
                                     mainAxisSpacing: 16,
-                                    childAspectRatio: 163 / 282,
+                                    childAspectRatio: 163 / 320,
                                   ),
                                   itemBuilder: (_, index) {
                                     final filteredGenreList =
