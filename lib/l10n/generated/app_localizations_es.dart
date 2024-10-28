@@ -13,34 +13,34 @@ class AppLocalizationsEs extends AppLocalizations {
   String get helloVTI => 'Hola VTI, Paju Dora?';
 
   @override
-  String get profile_app_bar_title => 'Profile screen';
+  String get profile_app_bar_title => 'Información de la cuenta';
 
   @override
-  String get name => 'ho va ten';
+  String get name => 'Nombre completo';
 
   @override
-  String get birth => 'birth of date';
+  String get birth => 'Fecha de nacimiento';
 
   @override
-  String get phone => 'sdt';
+  String get phone => ' Teléfono';
 
   @override
   String get email => 'Emails';
 
   @override
-  String get gender => 'gioi tinhs';
+  String get gender => 'Electró';
 
   @override
-  String get languge => 'ngon ngus';
+  String get languge => 'Idioma';
 
   @override
-  String get save => 'Luu';
+  String get save => 'Ahorrar';
 
   @override
-  String get male => 'Males';
+  String get male => 'Mascul';
 
   @override
-  String get female => 'Female';
+  String get female => 'Femen';
 
   @override
   String get other => 'Other';
