@@ -6,7 +6,7 @@
     <package android:name="com.facebook.orca"/> -->
  </queries>
     <application
-        android:label="Netflix FAKER"
+        android:label="Disney"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
          >
