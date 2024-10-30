@@ -44,3 +44,5 @@ app.*.map.json
 
 #dot env
 *.env
+#properties
+*key.properties
