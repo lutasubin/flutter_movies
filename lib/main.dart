@@ -85,4 +85,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// NowPlayingMoviesScreen()
+
