@@ -1,173 +1,219 @@
-Flutter Movies App
+📽️ Flutter Movies App — Dự án cá nhân
 
-Flutter Movies App là ứng dụng xem thông tin phim được phát triển bằng Flutter, sử dụng API The Movie Database (TMDB) để hiển thị danh sách phim, chi tiết phim và các thông tin liên quan.
-
-Dự án được xây dựng nhằm mục đích học tập – thực hành Flutter, rèn luyện kỹ năng:
-
-Xây dựng UI/UX
-
-Làm việc với REST API
-
-Quản lý state
-
-Tổ chức cấu trúc project Flutter
-
-📌 Thông tin dự án
-
-Tên dự án: Flutter Movies App
-
-Nền tảng: Flutter (Android / iOS / Web)
-
-Loại dự án: Cá nhân
+Ứng dụng xem thông tin phim sử dụng TMDB API (The Movie Database), xây dựng theo Clean Architecture và BLoC state management.
 
 Tác giả: Nguyễn Đức Thành
-
 GitHub: https://github.com/lutasubin/flutter_movies
 
-🧠 Mô tả chi tiết
+🧠 Mục tiêu dự án
 
-Ứng dụng cho phép người dùng:
+Ứng dụng này được thiết kế để:
 
-Xem danh sách phim đang thịnh hành
+✔ Thực hành kiến trúc phần mềm chuẩn
+✔ Tách biệt rõ ràng giữa UI / domain / data
+✔ Quản lý state hiệu quả với BLoC
+✔ Học cách tích hợp API phim (TMDB)
+✔ Dễ mở rộng tính năng trong tương lai
 
-Xem phim được đánh giá cao
+📁 Cấu trúc dự án
+/
+├── android/
+├── ios/
+├── lib/
+│   ├── Movies_App/
+│   │   ├── core/
+│   │   │   ├── apis/
+│   │   │   ├── common/
+│   │   │   ├── enums/
+│   │   │   ├── services/
+│   │   │   ├── theme/
+│   │   │   └── utils/
+│   │   ├── features/
+│   │   │   ├── auth/
+│   │   │   │   └── login/
+│   │   │   ├── home/
+│   │   │   └── profile/
+│   │   └── root_page.dart
+│   ├── firebase_options.dart
+│   ├── main.dart
+├── l10n/
+├── gen/
+├── pubspec.yaml
+└── README.md
 
-Xem thông tin chi tiết của từng bộ phim
+🛠️ Công nghệ & Packages chính
+Loại	Công nghệ / Package
+Framework	Flutter, Dart
+State Management	flutter_bloc
+Networking	Dio
+Env Config	flutter_dotenv
+Localization	Flutter Localization (l10n)
+Dependency Injection	get_it (nếu dùng)
+Navigation	go_router (tùy code)
+Theming / UI	Material 3, custom Theme
+Firebase	Firebase Core, Auth, Firestore (tùy sử dụng)
+🧩 Kiến trúc
+🚀 Clean Architecture
 
-Hiển thị poster, mô tả, ngày phát hành, điểm đánh giá
+Dự án tách thành 3 tầng rõ rệt:
 
-Trải nghiệm giao diện hiện đại, dễ sử dụng
+Presentation  → UI + BLoC
+Domain        → Entities + UseCases
+Data          → Repositories + DataSources
 
-Ứng dụng hướng tới tính đơn giản – dễ mở rộng – dễ bảo trì, phù hợp để phát triển thêm các tính năng nâng cao trong tương lai.
+🧠 layers giải thích
+🧪 Data
 
-✨ Tính năng chính
-🎞️ Danh sách phim
+Chịu trách nhiệm lấy dữ liệu từ TMDB API hoặc Firebase
 
-Hiển thị phim phổ biến (Popular Movies)
+Chứa: models, repository implementation, datasource
 
-Hiển thị phim được đánh giá cao (Top Rated)
+Mapping JSON → Models
 
-Load dữ liệu từ TMDB API
+📚 Domain
 
-📄 Chi tiết phim
+Định nghĩa business logic thuần
 
-Poster phim chất lượng cao
+Có: entities, usecases, abstract repositories
 
-Tên phim
+Không phụ thuộc Flutter
 
-Mô tả nội dung
+🎨 Presentation
 
-Ngày phát hành
+UI widgets + pages
 
-Điểm đánh giá (rating)
+BLoC cho state management
 
-📱 Giao diện
+BLoC events → states
 
-Responsive UI
+📌 Feature theo module
+🧑‍💻 Auth – Login
 
-Tối ưu hiển thị cho nhiều kích thước màn hình
+Xử lý đăng nhập user
 
-Thiết kế theo Material Design
+Có thể dùng Firebase Auth
 
-🧩 Công nghệ sử dụng
-Công nghệ	Mô tả
-Flutter	Framework phát triển ứng dụng đa nền tảng
-Dart	Ngôn ngữ lập trình
-REST API	Lấy dữ liệu phim
-TMDB API	Nguồn dữ liệu phim
-HTTP / Dio	Gọi API
-Cached Network Image	Cache ảnh poster
-State Management	setState / Provider / BLoC (tuỳ phiên bản)
-🗂️ Cấu trúc thư mục
-lib/
-├── models/        # Model dữ liệu (Movie, Response...)
-├── services/      # Gọi API, xử lý dữ liệu
-├── screens/       # Các màn hình chính
-│   ├── home/
-│   ├── detail/
-├── widgets/       # Widget tái sử dụng
-├── constants/     # Hằng số, API URL
-└── main.dart      # Entry point của app
+BLoC quản lý trạng thái đăng nhập
 
+Login Flow:
 
-Cấu trúc được tổ chức rõ ràng, dễ đọc, dễ bảo trì và mở rộng.
+UI → LoginEvent → AuthBloc → AuthState → UI
 
-🔑 API Configuration
+🏡 Home
 
-Ứng dụng sử dụng The Movie Database API.
+Hiển thị danh sách phim
 
-Bước 1: Đăng ký API Key
+Có phân loại phim: Popular, Top Rated, Now Playing
 
-Truy cập: https://www.themoviedb.org/
+Load từ TMDB API
 
-Đăng ký tài khoản và tạo API Key
+👤 Profile
 
-Bước 2: Thêm API Key vào project
+Hiển thị thông tin người dùng
 
-Tạo file .env tại thư mục gốc:
+Chức năng logout
 
-TMDB_API_KEY=YOUR_API_KEY
-BASE_URL=https://api.themoviedb.org/3
+🌀 Root Navigator
 
+Tập trung điều hướng giữa các feature chính:
 
-⚠️ Không commit API Key lên GitHub
+Splash / Onboarding (nếu có)
 
-🚀 Cách chạy dự án
-1️⃣ Clone project
+Login
+
+Main (Home + Profile)
+
+📌 Localization (Đa ngôn ngữ)
+
+Dự án hỗ trợ đa ngôn ngữ trong l10n/:
+
+app_en.arb — English
+
+app_vi.arb — Vietnamese
+
+Bạn có thể mở rộng thêm các locale khác.
+
+📥 Cách cài đặt & chạy dự án
+1️⃣ Clone repo
 git clone https://github.com/lutasubin/flutter_movies.git
 cd flutter_movies
 
-2️⃣ Cài đặt package
+2️⃣ Tạo file .env
+
+Tại thư mục gốc, tạo file .env và thêm:
+
+TMDB_API_KEY=YOUR_API_KEY
+TMDB_BASE_URL=https://api.themoviedb.org/3
+
+
+Lấy API key miễn phí tại: https://www.themoviedb.org/
+ 
+GitHub
+
+3️⃣ Cài packages
 flutter pub get
 
-3️⃣ Chạy ứng dụng
+4️⃣ Khởi chạy
 flutter run
 
-🎯 Định hướng phát triển
 
-Trong tương lai, dự án có thể mở rộng thêm:
+Hoặc chọn thiết bị mục tiêu: Android / iOS / Web
 
-🔍 Tìm kiếm phim
+📊 API Endpoints (TMDB)
 
-❤️ Danh sách phim yêu thích
+Dự án sử dụng API TMDB chính:
 
-🌙 Dark Mode
+Endpoint	Mục đích
+/movie/popular	Lấy phim phổ biến
+/movie/top_rated	Lấy phim được đánh giá cao
+/movie/now_playing	Phim đang chiếu
+/search/movie	Tìm kiếm phim
 
-▶️ Xem trailer phim (YouTube)
+(Tuỳ vào code có thể có thêm endpoint khác)
 
-💾 Lưu dữ liệu offline
+🧠 Bloc Pattern
 
-🔐 Đăng nhập người dùng (Firebase)
+Tất cả state management trong UI đều qua BLoC:
 
-🧪 Mục tiêu học tập
+Event → Bloc → Emit State → UI rebuild
 
-Dự án giúp rèn luyện:
 
-✔ Flutter UI
-✔ Làm việc với API
-✔ Xử lý JSON
-✔ Tổ chức project thực tế
-✔ Tư duy phát triển ứng dụng mobile
+Ưu điểm:
 
-🤝 Đóng góp
+✔ Tách UI khỏi business logic
+✔ Dễ test
+✔ Dễ mở rộng
 
-Mọi đóng góp đều được hoan nghênh:
+🏆 Feature nâng cao có thể thêm
 
-Fork repository
+Đây là gợi ý để bạn phát triển project:
 
-Tạo branch mới
+✔ Tìm kiếm phim
+✔ Favorites / Watchlist
+✔ Trailers bằng YouTube API
+✔ Offline cache (Hive / Isar)
+✔ Dark mode
+✔ Firebase Firestore lưu user data
 
-Commit code
+❗ Lưu ý & Best Practices
+🔐 Không commit API Key
 
-Tạo Pull Request
+Đảm bảo .env không bị commit lên GitHub.
 
-📄 License
+🧪 Testing
 
-Dự án được phát hành theo MIT License
-Bạn có thể tự do sử dụng cho mục đích học tập và phát triển.
+Bạn có thể thêm:
 
-👨‍💻 Tác giả
+Unit test cho Usecases
 
-Nguyễn Đức Thành
-🎓 Flutter Developer
-📧 GitHub: https://github.com/lutasubin
+BLoC test cho states
+
+Widget test cho UI
+
+🤝 Góp ý & đóng góp
+
+hãy góp ý qua ducthanh22112004@gmail.com
+
+📝 License
+
+Dự án theo MIT License — bạn có thể sử dụng hoặc mở rộng cho mục đích học tập & công việc.
